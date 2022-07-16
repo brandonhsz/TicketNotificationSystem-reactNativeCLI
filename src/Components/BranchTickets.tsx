@@ -67,12 +67,13 @@ const BranchTickets = () => {
 
 const styles = StyleSheet.create({
   mainContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
   },
 
   ticketContainer: {
     flexDirection: 'row',
-    position: 'relative',
-    top: 390,
   }
 });
 
