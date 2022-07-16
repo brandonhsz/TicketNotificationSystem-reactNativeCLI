@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "970759274851",
+    "project_id": "notifications-cf0cd",
+    "storage_bucket": "notifications-cf0cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:970759274851:android:28e05e74134fc5e7301356",
+        "android_client_info": {
+          "package_name": "com.stonotis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "970759274851-m046gs8un8usri94gd9ufu84g7traq0h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB39H1qr33JBpyVrd1G4E3gVKAvB5jPy70"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "970759274851-m046gs8un8usri94gd9ufu84g7traq0h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
