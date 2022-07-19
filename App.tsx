@@ -18,6 +18,8 @@ export default function App() {
 
 
   useEffect(() => {
+    messaging().subscribeToTopic('tickets').then(() => { console.log('subscribed to topic') })
+
     const unsubscribe = messaging().onMessage(async remoteMessage => {
       Alert.alert('Nuevo Ticket:', remoteMessage?.notification?.body);
     });
