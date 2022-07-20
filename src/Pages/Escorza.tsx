@@ -1,20 +1,22 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React, { useEffect } from 'react'
+
 import DangerText from '../Components/DangerText'
+import { styles } from '../Theme/branchTheme'
+
 import useBranches from '../hooks/useBranches';
+import Ticket from '../Components/Ticket';
+import { TicketInterface } from '../interfaces/ticket.interface';
 
-
-export default function Escorza({ navigation }: any) {
+export function Escorza({ navigation }: any) {
 
   const { escorza: branch, fetching } = useBranches();
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
-      // Screen was focused
-      // Do something
+
       fetching('escorza');
     });
-
     return unsubscribe;
   }, [navigation])
 
@@ -22,25 +24,15 @@ export default function Escorza({ navigation }: any) {
     <View style={styles.modalView}>
       {
         branch?.length > 0 ? (
-          branch.map((data: any) => (
-            <View
-              key={data.TicketNumber}
-              style={styles.ticketContainer}
-            >
-              <Text style={styles.dataText}>
-                Number  : {data.TicketBranch.trim()}
-              </Text>
-              <Text style={styles.dataText}>
-                Time    : {data.TicketTime.trim()}
-              </Text>
-              <Text style={styles.dataText}>
-                Subject : {data.TicketSubjet.trim()}
-              </Text>
-              <Text style={styles.dataText}>
-                Author  : {data.TicketAuthor.trim()}
-              </Text>
-
-            </View>
+          branch.map((ticket: TicketInterface) => (
+            <Ticket
+              key={ticket.TicketNumber}
+              TicketAuthor={ticket.TicketAuthor}
+              TicketBranch={ticket.TicketBranch}
+              TicketNumber={ticket.TicketNumber}
+              TicketSubjet={ticket.TicketSubjet}
+              TicketTime={ticket.TicketTime}
+            />
           ))
         ) : (<DangerText message='Sin tickets' />)
       }
@@ -48,40 +40,6 @@ export default function Escorza({ navigation }: any) {
   )
 }
 
-const styles = StyleSheet.create({
-  ticketContainer: {
-    borderWidth: 1,
-    borderColor: "thistle",
-    borderRadius: 10,
-    padding: 10,
-    margin: 2,
-    minWidth: "90%",
-    maxWidth: "90%"
-  },
-  branchText: {
-    fontWeight: "bold",
-    color: "white",
-    fontSize: 20,
-    padding: 10,
-    margin: 5,
-    borderWidth: 1,
-    borderColor: "thistle",
-    borderRadius: 10,
-    textAlign: "center"
-  },
-  dataText: {
-    color: "white",
-    fontFamily: "monospace",
-  },
-  centeredView: {
-    flex: 1,
+export default Escorza;
 
-    alignItems: "center",
-    marginTop: 22
-  },
-  modalView: {
-    marginTop: 10,
-    flexDirection: "column",
-    alignItems: "center",
-  },
-})
+

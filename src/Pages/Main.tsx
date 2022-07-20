@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import React from 'react'
 
-export default function Main({ navigation }: any) {
+export function Main({ navigation }: any) {
 
   const navigations = {
     escorza: 'Escorza',

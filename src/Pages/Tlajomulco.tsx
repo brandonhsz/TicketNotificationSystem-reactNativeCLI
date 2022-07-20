@@ -1,9 +1,14 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React, { useEffect } from 'react'
-import DangerText from '../Components/DangerText'
-import useBranches from '../hooks/useBranches';
 
-export default function Tlajomulco({ navigation }: any) {
+import DangerText from '../Components/DangerText'
+import { styles } from '../Theme/branchTheme'
+
+import useBranches from '../hooks/useBranches';
+import { TicketInterface } from '../interfaces/ticket.interface';
+import Ticket from '../Components/Ticket';
+
+export function Tlajomulco({ navigation }: any) {
 
   const { tlajomulco: branch, fetching } = useBranches();
 
@@ -13,31 +18,21 @@ export default function Tlajomulco({ navigation }: any) {
     });
 
     return unsubscribe;
-  }, [navigation])
+  }, [branch, navigation])
 
   return (
     <View style={styles.modalView}>
       {
         branch?.length > 0 ? (
-          branch.map((data: any) => (
-            <View
-              key={data.TicketNumber}
-              style={styles.ticketContainer}
-            >
-              <Text style={styles.dataText}>
-                Number  : {data.TicketBranch.trim()}
-              </Text>
-              <Text style={styles.dataText}>
-                Time    : {data.TicketTime.trim()}
-              </Text>
-              <Text style={styles.dataText}>
-                Subject : {data.TicketSubjet.trim()}
-              </Text>
-              <Text style={styles.dataText}>
-                Author  : {data.TicketAuthor.trim()}
-              </Text>
-
-            </View>
+          branch.map((ticket: TicketInterface) => (
+            <Ticket
+              TicketAuthor={ticket.TicketAuthor}
+              TicketBranch={ticket.TicketBranch}
+              TicketNumber={ticket.TicketNumber}
+              TicketSubjet={ticket.TicketSubjet}
+              TicketTime={ticket.TicketTime}
+              key={ticket.TicketNumber}
+            />
           ))
         ) : (<DangerText message='Sin tickets' />)
       }
@@ -45,44 +40,4 @@ export default function Tlajomulco({ navigation }: any) {
   )
 }
 
-const styles = StyleSheet.create({
-  ticketContainer: {
-    borderWidth: 1,
-    borderColor: "thistle",
-    borderRadius: 10,
-    padding: 10,
-    margin: 2,
-    minWidth: "90%",
-    maxWidth: "90%"
-  },
-  branchText: {
-    fontWeight: "bold",
-    color: "white",
-    fontSize: 20,
-    padding: 10,
-    margin: 5,
-    borderWidth: 1,
-    borderColor: "thistle",
-    borderRadius: 10,
-    textAlign: "center"
-  },
-  dataText: {
-    color: "white",
-    fontFamily: "monospace",
-  },
-  centeredView: {
-    flex: 1,
-
-    alignItems: "center",
-    marginTop: 22
-  },
-  modalView: {
-    marginTop: 10,
-    flexDirection: "column",
-    alignItems: "center",
-  },
-})
-function fetching(arg0: string) {
-  throw new Error('Function not implemented.');
-}
-
+export default Tlajomulco;

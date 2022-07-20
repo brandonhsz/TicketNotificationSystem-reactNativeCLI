@@ -1,30 +1,23 @@
-import { Alert } from 'react-native'
 import React, { useEffect } from 'react'
-
-import messaging from '@react-native-firebase/messaging';
 
 import { DarkTheme, NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import Escorza from './src/Pages/Escorza';
-import Revolucion from './src/Pages/Revolucion';
-import Tlajomulco from './src/Pages/Tlajomulco';
+import { Escorza, Revolucion, Tlajomulco } from './src/Pages'
+import useFirebase from './src/hooks/useFirebase';
 
 
 
 export default function App() {
   const Drawer = createDrawerNavigator();
-
-
+  const { foregroundNotifications, susbscribeToTopic } = useFirebase()
 
   useEffect(() => {
-    messaging().subscribeToTopic('tickets').then(() => { console.log('subscribed to topic') })
-
-    const unsubscribe = messaging().onMessage(async remoteMessage => {
-      Alert.alert('Nuevo Ticket:', remoteMessage?.notification?.body);
-    });
-    return unsubscribe;
+    foregroundNotifications()
+    susbscribeToTopic()
   }, []);
+
+
   return (
 
     <NavigationContainer theme={MainTheme as any}>

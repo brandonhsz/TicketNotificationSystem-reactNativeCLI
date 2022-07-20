@@ -6,8 +6,9 @@ import { createDrawerNavigator } from '@react-navigation/drawer'
 import Escorza from './Escorza';
 import Revolucion from './Revolucion';
 import Tlajomulco from './Tlajomulco';
+// import { Escorza, Revolucion, Tlajomulco } from './index'
 
-export default function ShowTickets() {
+export function ShowTickets() {
 
   const Drawer = createDrawerNavigator();
 
