@@ -1,13 +1,9 @@
 import React, { useEffect } from 'react'
 
 import { DarkTheme, NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-
-import { Escorza, Revolucion, Tlajomulco } from './src/Pages'
 import useFirebase from './src/hooks/useFirebase';
-import Navigator from './src/Components/Navigator';
-
-
+import DrawerNavigator from './src/Components/DrawerNavigator';
+import TabNavigator from './src/Components/TabNavigator';
 
 export default function App() {
 
@@ -22,13 +18,11 @@ export default function App() {
   return (
 
     <NavigationContainer theme={MainTheme as any}>
-      <Navigator />
+      <TabNavigator />
     </NavigationContainer>
 
   )
 }
-
-
 
 const MainTheme = {
   colors: {

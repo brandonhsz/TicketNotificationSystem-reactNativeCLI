@@ -9,23 +9,35 @@ interface IProps extends TicketInterface {
 
 }
 
-export default function Ticket({ TicketNumber, TicketBranch, TicketTime, TicketSubjet, TicketAuthor }: IProps) {
+export default function Ticket({ TicketNumber, TicketTime, TicketSubjet, TicketAuthor }: IProps) {
 
   return (
     <View
       key={TicketNumber}
       style={styles.ticketContainer}
     >
-      <Text style={styles.dataText}>
-        Number  : {TicketBranch.trim()}
+      <Text
+        testID='number'
+        style={styles.dataText}
+      >
+        Number  : {TicketNumber.trim()}
       </Text>
-      <Text style={styles.dataText}>
+      <Text
+        testID='time'
+        style={styles.dataText}
+      >
         Time    : {TicketTime.trim()}
       </Text>
-      <Text style={styles.dataText}>
+      <Text
+        testID='subject'
+        style={styles.dataText}
+      >
         Subject : {TicketSubjet.trim()}
       </Text>
-      <Text style={styles.dataText}>
+      <Text
+        testID='author'
+        style={styles.dataText}
+      >
         Author  : {TicketAuthor.trim()}
       </Text>
 
