@@ -2,8 +2,7 @@ import React, { useEffect } from 'react'
 
 import { DarkTheme, NavigationContainer } from '@react-navigation/native';
 import useFirebase from './src/hooks/useFirebase';
-import DrawerNavigator from './src/Components/DrawerNavigator';
-import TabNavigator from './src/Components/TabNavigator';
+import TabNavigator from './src/Navigators/TabNavigator';
 
 export default function App() {
 
