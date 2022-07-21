@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View } from 'react-native'
 import React, { useEffect } from 'react'
 
 import DangerText from '../Components/DangerText'
@@ -14,8 +14,6 @@ export function Revolucion({ navigation }: any) {
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
-      // Screen was focused
-      // Do something
       fetching('revo');
     });
 
