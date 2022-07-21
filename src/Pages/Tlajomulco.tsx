@@ -27,7 +27,6 @@ export function Tlajomulco({ navigation }: any) {
           branch.map((ticket: TicketInterface) => (
             <Ticket
               TicketAuthor={ticket.TicketAuthor}
-              TicketBranch={ticket.TicketBranch}
               TicketNumber={ticket.TicketNumber}
               TicketSubjet={ticket.TicketSubjet}
               TicketTime={ticket.TicketTime}
