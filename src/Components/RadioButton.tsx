@@ -4,18 +4,18 @@ import { style } from '../Theme/radioButtonTheme'
 
 interface IProps {
   turnState: boolean
-  dispatch: (action: any) => void
   label: string
+  onChange: () => void
 }
 
-export default function RadioButton({ turnState, dispatch, label }: IProps) {
+export default function RadioButton({ turnState, onChange, label }: IProps) {
   return (
     <View style={style.container}>
       <Text style={style.text}>{`${label}:${turnState ? "On" : 'OFF'}`}</Text>
       <Switch
         trackColor={{ false: '#767577', true: '#767577' }}
         thumbColor={turnState ? '#f5dd4b' : '#f4f3f4'}
-        onValueChange={dispatch}
+        onValueChange={onChange}
         value={turnState}
       />
     </View>

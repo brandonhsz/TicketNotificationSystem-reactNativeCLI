@@ -3,36 +3,29 @@ import React, { useEffect } from 'react'
 import useTurn from '../hooks/useTurn';
 import RadioButton from './RadioButton';
 import { style } from '../Theme/formTheme';
+import { useStore } from '../Zustand/stores/settings.store';
 
 export default function Form() {
+  const { morningTurn, afternoonTurn, unSetAfternoonTurn, unSetMorningTurn } = useStore();
+  const { setAfternoonTurn, setMorningTurn } = useStore();
 
-  const { turnState, dispatch } = useTurn()
-
-  if (turnState.afternoonTurn && turnState.morningTurn) {
-    dispatch({ type: 'setFulltime' })
-  }
 
   return (
     <View style={style.container}>
       <Text style={style.text}>TURN TO RECEIVE NOTIFICATIONS:</Text>
       <View style={style.formContainer}>
         <RadioButton
-          turnState={turnState.morningTurn}
-          dispatch={() => dispatch({ type: 'setMorning' })}
+          turnState={morningTurn}
+          onChange={morningTurn ? unSetMorningTurn : setMorningTurn}
           label="Morning   "
         />
 
         <RadioButton
-          turnState={turnState.afternoonTurn}
-          dispatch={() => dispatch({ type: 'setAfternoon' })}
+          turnState={afternoonTurn}
+          onChange={afternoonTurn ? unSetAfternoonTurn : setAfternoonTurn}
           label="Afternoon"
         />
 
-        <RadioButton
-          turnState={turnState.fulltime}
-          dispatch={() => dispatch({ type: 'setFulltime' })}
-          label="Fulltime    "
-        />
       </View>
 
     </View>

@@ -4,8 +4,12 @@ import messaging from '@react-native-firebase/messaging';
 
 export default function useFirebase() {
 
-  const susbscribeToTopic = () => {
-    messaging().subscribeToTopic('tickets').then(() => { console.log('subscribed to topic') })
+  const susbscribeToTopic = (turn: string = 'morningTurn') => {
+    messaging().subscribeToTopic(turn).then(() => { console.log(`subscribed to ${turn}`) })
+  }
+
+  const unsubscribeFromTopic = (turn: string) => {
+    messaging().unsubscribeFromTopic(turn).then(() => { console.log(`unsubscribed from ${turn}`) })
   }
 
   const foregroundNotifications = () => {
@@ -20,8 +24,10 @@ export default function useFirebase() {
     });
   }
 
+
   return {
     susbscribeToTopic,
+    unsubscribeFromTopic,
     foregroundNotifications,
     backgroundNotifications
   }

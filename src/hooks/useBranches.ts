@@ -20,7 +20,7 @@ const useBranches = () => {
       tlajo: tlajo
     })
 
-    console.log(`fetched desde ${name}`)
+    // console.log(`fetched desde ${name}`)
   }
 
   useEffect(() => {

@@ -14,9 +14,6 @@ export default function Navigator() {
           <Drawer.Screen name="TLAJOMULCO" component={Tlajomulco} options={{ headerTitleAlign: "center" }} />
         </Drawer.Group>
 
-        <Drawer.Group>
-          <Drawer.Screen name="SETTINGS" component={Settings} />
-        </Drawer.Group>
       </Drawer.Navigator>
 
     </>

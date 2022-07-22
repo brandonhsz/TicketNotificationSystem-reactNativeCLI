@@ -6,13 +6,13 @@ import TabNavigator from './src/Navigators/TabNavigator';
 
 export default function App() {
 
-  const { foregroundNotifications, susbscribeToTopic } = useFirebase()
+  const { foregroundNotifications, susbscribeToTopic, unsubscribeFromTopic } = useFirebase()
 
   useEffect(() => {
     foregroundNotifications()
-    susbscribeToTopic()
+    unsubscribeFromTopic('morningTurn')
+    unsubscribeFromTopic('afternoonTurn')
   }, []);
-
 
   return (
 
