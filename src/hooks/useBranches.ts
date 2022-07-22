@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
 import { INITIAL_STATE } from '../constants/INITIAL_STATE';
 
 const useBranches = () => {
@@ -24,8 +23,6 @@ const useBranches = () => {
   }
 
   useEffect(() => {
-
-
     fetching()
   }, [])
 

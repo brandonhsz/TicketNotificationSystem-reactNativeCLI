@@ -1,4 +1,4 @@
-import { View, Text, Alert } from 'react-native'
+import { Alert } from 'react-native'
 import React from 'react'
 import messaging from '@react-native-firebase/messaging';
 

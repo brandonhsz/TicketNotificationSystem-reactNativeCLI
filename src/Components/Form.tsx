@@ -1,6 +1,5 @@
-import { View, Text, Switch } from 'react-native'
-import React, { useEffect } from 'react'
-import useTurn from '../hooks/useTurn';
+import { View, Text } from 'react-native'
+import React from 'react'
 import RadioButton from './RadioButton';
 import { style } from '../Theme/formTheme';
 import { useStore } from '../Zustand/stores/settings.store';

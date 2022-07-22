@@ -1,13 +1,10 @@
 import { View, Text } from 'react-native'
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { styles } from '../Theme/ticketTheme'
 import { TicketInterface } from '../interfaces/ticket.interface'
 
-
-interface IProps extends TicketInterface {
-
-}
+interface IProps extends TicketInterface { }
 
 export default function Ticket({ TicketNumber, TicketTime, TicketSubjet, TicketAuthor }: IProps) {
 

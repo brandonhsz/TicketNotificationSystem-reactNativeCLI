@@ -28,7 +28,6 @@ export function Escorza({ navigation }: any) {
             <Ticket
               key={ticket.TicketNumber}
               TicketAuthor={ticket.TicketAuthor}
-              TicketBranch={ticket.TicketBranch}
               TicketNumber={ticket.TicketNumber}
               TicketSubjet={ticket.TicketSubjet}
               TicketTime={ticket.TicketTime}
