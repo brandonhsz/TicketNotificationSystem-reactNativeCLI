@@ -1,4 +1,7 @@
+
+import AsyncStorage from '@react-native-community/async-storage';
 import create from 'zustand';
+import { persist } from 'zustand/middleware';
 import useFirebase from '../../hooks/useFirebase';
 
 interface ISettingsStore {
@@ -14,35 +17,44 @@ interface ISettingsStore {
 
 const { susbscribeToTopic, unsubscribeFromTopic } = useFirebase()
 
-export const useStore = create<ISettingsStore>(set => ({
-  morningTurn: false,
-  afternoonTurn: false,
-
-
-  setMorningTurn: () => {
-    set(state => ({
-      morningTurn: true,
-    }));
-    susbscribeToTopic('morningTurn');
-  },
-  setAfternoonTurn: () => {
-    set(state => ({
-      afternoonTurn: true,
-    }));
-    susbscribeToTopic('afternoonTurn');
-  },
-
-  unSetMorningTurn: () => {
-    set(state => ({
+export const useStore = create(
+  persist<ISettingsStore>(
+    (set, get) => ({
       morningTurn: false,
-    }));
-    unsubscribeFromTopic('morningTurn');
-  },
-
-  unSetAfternoonTurn: () => {
-    set(state => ({
       afternoonTurn: false,
-    }));
-    unsubscribeFromTopic('afternoonTurn');
-  }
-}))
+
+
+      setMorningTurn: async () => {
+        set(state => ({
+          morningTurn: true,
+        }));
+        susbscribeToTopic('morningTurn');
+        await AsyncStorage.setItem('morningTurn', 'true');
+      },
+      setAfternoonTurn: () => {
+        set(state => ({
+          afternoonTurn: true,
+        }));
+        susbscribeToTopic('afternoonTurn');
+      },
+
+      unSetMorningTurn: () => {
+        set(state => ({
+          morningTurn: false,
+        }));
+        unsubscribeFromTopic('morningTurn');
+      },
+
+      unSetAfternoonTurn: () => {
+        set(state => ({
+          afternoonTurn: false,
+        }));
+        unsubscribeFromTopic('afternoonTurn');
+      }
+    }),
+    {
+      name: 'settingsStorage',
+      getStorage: () => AsyncStorage,
+    }
+  )
+)
