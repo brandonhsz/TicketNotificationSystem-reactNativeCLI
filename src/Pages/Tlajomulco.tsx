@@ -7,6 +7,7 @@ import { styles } from '../Theme/branchTheme'
 import useBranches from '../hooks/useBranches';
 import { TicketInterface } from '../interfaces/ticket.interface';
 import Ticket from '../Components/Ticket';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export function Tlajomulco({ navigation }: any) {
 
@@ -21,21 +22,23 @@ export function Tlajomulco({ navigation }: any) {
   }, [branch, navigation])
 
   return (
-    <View style={styles.modalView}>
-      {
-        branch?.length > 0 ? (
-          branch.map((ticket: TicketInterface) => (
-            <Ticket
-              TicketAuthor={ticket.TicketAuthor}
-              TicketNumber={ticket.TicketNumber}
-              TicketSubjet={ticket.TicketSubjet}
-              TicketTime={ticket.TicketTime}
-              key={ticket.TicketNumber}
-            />
-          ))
-        ) : (<DangerText message='Sin tickets' />)
-      }
-    </View>
+    <ScrollView>
+      <View style={styles.modalView}>
+        {
+          branch?.length > 0 ? (
+            branch.map((ticket: TicketInterface) => (
+              <Ticket
+                TicketAuthor={ticket.TicketAuthor}
+                TicketNumber={ticket.TicketNumber}
+                TicketSubjet={ticket.TicketSubjet}
+                TicketTime={ticket.TicketTime}
+                key={ticket.TicketNumber}
+              />
+            ))
+          ) : (<DangerText message='Sin tickets' />)
+        }
+      </View>
+    </ScrollView>
   )
 }
 

@@ -1,4 +1,4 @@
-import { View } from 'react-native'
+import { ScrollView, View } from 'react-native'
 import React, { useEffect } from 'react'
 
 import DangerText from '../Components/DangerText'
@@ -21,21 +21,23 @@ export function Escorza({ navigation }: any) {
   }, [navigation])
 
   return (
-    <View style={styles.modalView}>
-      {
-        branch?.length > 0 ? (
-          branch.map((ticket: TicketInterface) => (
-            <Ticket
-              key={ticket.TicketNumber}
-              TicketAuthor={ticket.TicketAuthor}
-              TicketNumber={ticket.TicketNumber}
-              TicketSubjet={ticket.TicketSubjet}
-              TicketTime={ticket.TicketTime}
-            />
-          ))
-        ) : (<DangerText message='Sin tickets' />)
-      }
-    </View>
+    <ScrollView>
+      <View style={styles.modalView}>
+        {
+          branch?.length > 0 ? (
+            branch.map((ticket: TicketInterface) => (
+              <Ticket
+                key={ticket.TicketNumber}
+                TicketAuthor={ticket.TicketAuthor}
+                TicketNumber={ticket.TicketNumber}
+                TicketSubjet={ticket.TicketSubjet}
+                TicketTime={ticket.TicketTime}
+              />
+            ))
+          ) : (<DangerText message='Sin tickets' />)
+        }
+      </View>
+    </ScrollView>
   )
 }
 
